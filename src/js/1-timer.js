@@ -1,7 +1,4 @@
-import flatpickr from 'flatpickr';
-import 'flatpickr/dist/flatpickr.min.css';
-import confirmDatePlugin from 'flatpickr/dist/plugins/confirmDate/confirmDate.js';
-import 'flatpickr/dist/plugins/confirmDate/confirmDate.css';
+import { iziToast, flatpickr, confirmDatePlugin } from './libs';
 
 const startBtn = document.querySelector('[data-start]');
 const dateInput = document.querySelector('#datetime-picker');
@@ -28,7 +25,6 @@ flatpickr(dateInput, {
       }
       return;
     }
-    console.log(userSelectedDate);
     startBtn.removeAttribute('disabled');
   },
 });
