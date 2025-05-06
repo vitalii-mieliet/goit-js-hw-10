@@ -19,7 +19,10 @@ flatpickr(dateInput, {
   onClose(selectedDates) {
     userSelectedDate = selectedDates[0];
     if (userSelectedDate < new Date()) {
-      console.log('Please choose a date in the future');
+      iziToast.error({
+        position: 'topRight',
+        message: 'Please choose a date in the future',
+      });
       if (!startBtn.hasAttribute('disabled')) {
         startBtn.setAttribute('disabled', '');
       }
@@ -48,8 +51,6 @@ function countdownTimer() {
       startBtn.removeAttribute('disabled');
       dateInput.removeAttribute('disabled');
     }
-
-    console.log(diff);
   }, 1000);
 }
 
