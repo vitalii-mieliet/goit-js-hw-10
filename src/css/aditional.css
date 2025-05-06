@@ -1,0 +1,10 @@
+.nav-list {
+  display: flex;
+  flex-direction: row;
+  column-gap: 24px;
+}
+
+.nav-link {
+  font-size: 20px;
+  padding: 12px 0;
+}
