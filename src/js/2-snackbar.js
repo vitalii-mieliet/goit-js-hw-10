@@ -15,10 +15,10 @@ function onFormSubmit(event) {
         message: `Fulfilled promise in ${value}ms`,
       })
     )
-    .catch(error =>
+    .catch(value =>
       iziToast.error({
         position: 'topRight',
-        message: `Rejected promise in ${error}ms`,
+        message: `Rejected promise in ${value}ms`,
       })
     )
     .finally(() => form.reset());
