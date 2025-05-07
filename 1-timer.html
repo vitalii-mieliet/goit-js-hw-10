@@ -5,10 +5,11 @@
     <link rel="icon" type="image/svg+xml" href="/goit-js-hw-10/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Timer</title>
-    <script type="module" crossorigin src="/goit-js-hw-10/assets/modulepreload-polyfill-B5Qt9EMX.js"></script>
-    <script type="module" crossorigin src="/goit-js-hw-10/assets/vendor-GSBeNpK9.js"></script>
-    <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/vendor-CUZofXIC.css">
-    <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/styles-B-3KbEBB.css">
+    <script type="module" crossorigin src="/goit-js-hw-10/1-timer.js"></script>
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/modulepreload-polyfill-B5Qt9EMX.js">
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/vendor-D0Us1wJ1.js">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/vendor-BB9GdXdF.css">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/styles-CwDRGjVI.css">
   </head>
   <body>
     <div class="container">
@@ -21,11 +22,11 @@
       </nav>
     </div>
     <main>
-      <div class="container">
+      <div class="wraper">
         <input type="text" id="datetime-picker" />
         <button type="button" data-start>Start</button>
 
-        <div class="timer">
+        <div class="timer js-timer">
           <div class="field">
             <span class="value" data-days>00</span>
             <span class="label">Days</span>
