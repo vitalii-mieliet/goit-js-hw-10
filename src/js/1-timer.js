@@ -2,13 +2,14 @@ import { iziToast, flatpickr, confirmDatePlugin } from './libs';
 
 const startBtn = document.querySelector('[data-start]');
 const dateInput = document.querySelector('#datetime-picker');
-const timer = document.querySelector('.timer');
+const timer = document.querySelector('.js-timer');
 const daysEl = timer.querySelector('[data-days]');
 const hoursEl = timer.querySelector('[data-hours]');
 const minutesEl = timer.querySelector('[data-minutes]');
 const secondsEl = timer.querySelector('[data-seconds]');
 
 let userSelectedDate = null;
+startBtn.setAttribute('disabled', '');
 
 flatpickr(dateInput, {
   enableTime: true,
@@ -17,8 +18,7 @@ flatpickr(dateInput, {
   minuteIncrement: 1,
   plugins: [confirmDatePlugin({})],
   onClose(selectedDates) {
-    userSelectedDate = selectedDates[0];
-    if (userSelectedDate < new Date()) {
+    if (selectedDates[0] < new Date()) {
       iziToast.error({
         position: 'topRight',
         message: 'Please choose a date in the future',
@@ -28,27 +28,25 @@ flatpickr(dateInput, {
       }
       return;
     }
+    userSelectedDate = selectedDates[0];
     startBtn.removeAttribute('disabled');
   },
 });
 
-startBtn.addEventListener('click', () => {
-  countdownTimer();
-  startBtn.setAttribute('disabled', '');
-  dateInput.setAttribute('disabled', '');
-});
+startBtn.addEventListener('click', countdownTimer);
 
 function countdownTimer() {
+  startBtn.setAttribute('disabled', '');
+  dateInput.setAttribute('disabled', '');
   const intervalId = setInterval(() => {
     const diff = userSelectedDate - Date.now();
     const { days, hours, minutes, seconds } = convertMs(diff);
-    daysEl.textContent = addZero(days);
     hoursEl.textContent = addZero(hours);
     minutesEl.textContent = addZero(minutes);
     secondsEl.textContent = addZero(seconds);
     if (diff < 1000) {
       clearInterval(intervalId);
-      startBtn.removeAttribute('disabled');
+      // startBtn.removeAttribute('disabled');
       dateInput.removeAttribute('disabled');
     }
   }, 1000);
