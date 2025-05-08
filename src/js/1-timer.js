@@ -41,6 +41,7 @@ function countdownTimer() {
   const intervalId = setInterval(() => {
     const diff = userSelectedDate - Date.now();
     const { days, hours, minutes, seconds } = convertMs(diff);
+    daysEl.textContent = addZero(days);
     hoursEl.textContent = addZero(hours);
     minutesEl.textContent = addZero(minutes);
     secondsEl.textContent = addZero(seconds);
